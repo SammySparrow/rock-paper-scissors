@@ -19,19 +19,19 @@ function getHumanChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
-  let humanChoiceLower = humanChoice.toLowerCase();
+  humanChoice = humanChoice.toLowerCase();
   let result;
 
   if (
-    (humanChoiceLower === "rock" && computerChoice === "rock") ||
-    (humanChoiceLower === "paper" && computerChoice === "paper") ||
-    (humanChoiceLower === "scissors" && computerChoice === "scissors")
+    (humanChoice === "rock" && computerChoice === "rock") ||
+    (humanChoice === "paper" && computerChoice === "paper") ||
+    (humanChoice === "scissors" && computerChoice === "scissors")
   ) {
     result = "Draw.";
   } else if (
-    (humanChoiceLower === "rock" && computerChoice === "scissors") ||
-    (humanChoiceLower === "paper" && computerChoice === "rock") ||
-    (humanChoiceLower === "scissors" && computerChoice === "paper")
+    (humanChoice === "rock" && computerChoice === "scissors") ||
+    (humanChoice === "paper" && computerChoice === "rock") ||
+    (humanChoice === "scissors" && computerChoice === "paper")
   ) {
     result = "You win!";
   } else {
@@ -44,13 +44,23 @@ function playRound(humanChoice, computerChoice) {
     computerScore++;
   }
 
-  console.log(`You chose ${humanChoiceLower}, computer chose ${computerChoice}. ${result}
+  console.log(`You chose ${humanChoice}, computer chose ${computerChoice}. ${result}
     The current score is:
     Player - ${humanScore}
     Computer - ${computerScore}`);
 }
 
-let humanSelection = getHumanChoice();
-let computerSelection = getComputerChoice();
+function playGame() {
+  for (let i = 0; i < 5; i++) {
+    let humanSelection = getHumanChoice();
+    let computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
+    playRound(humanSelection, computerSelection);
+  }
+}
+
+playGame();
+
+// round should run 5 times
+// game run 5 times = false
+// after, set to true then return?
